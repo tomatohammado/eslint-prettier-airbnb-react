@@ -7,35 +7,25 @@ NC='\033[0m' # No Color
 
 echo -e "${GREEN}Starting Style Formatting Configuration... ${NC}"
 
-echo -e "1/5 ${LCYAN}Local ESLint & Prettier Installation... ${NC}"
-npm install -D eslint@5.6.0 prettier
+echo -e "1/4 ${LCYAN}Local ESLint & Prettier Installation... ${NC}"
+npm i -D eslint prettier
 
-echo -e "2/5 ${YELLOW}Airbnb Configuration Installation... ${NC}"
-npm install -D eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-import eslint-plugin-react babel-eslint
+echo -e "2/4 ${YELLOW}Airbnb Configuration Installation... ${NC}"
+npm i -D eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
 
-echo -e "3/5 ${LCYAN}Disabling ESLint Formatting... ${NC}"
-npm install -D eslint-config-prettier eslint-plugin-prettier eslint-plugin-flowtype@2.50.3 eslint-config-react-app
+echo -e "3/4 ${LCYAN}Disabling ESLint Formatting... ${NC}"
+npm i -D eslint-config-prettier eslint-plugin-prettier eslint-plugin-flowtype@2.50.3
 
-echo -e "4/5 ${YELLOW}Creating ESLint JSON... ${NC}"
+echo -e "4/4 ${YELLOW}Creating ESLint JSON... ${NC}"
 touch .eslintrc.json
 
 echo '{
-  "extends": ["airbnb", "prettier", "react-app", "plugin:prettier/recommended"],
+  "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": ["error"],
-    "jsx-a11y/href-no-hash": [0],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "jsx-a11y/href-no-hash": [0]
   }
 }' >> .eslintrc.json
 
-echo -e "5/5 ${YELLOW}Creating Custom Prettier Config... ${NC}"
-touch .prettierrc
-
-echo '{
-  "printWidth": 100,
-  "singleQuote": true
-}' >> .prettierrc
-
 echo -e "${GREEN}Done! ${NC}"
-
